@@ -1,6 +1,5 @@
 package com.order.order_service.Controller;
 
-import org.springframework.web.client.RestTemplate;
 import com.order.order_service.Model.Order;
 import com.order.order_service.Model.ProductDTO;
 import com.order.order_service.Model.UserDTO;

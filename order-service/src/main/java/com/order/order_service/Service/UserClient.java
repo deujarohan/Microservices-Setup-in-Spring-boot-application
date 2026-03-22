@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.*;
 
 import com.order.order_service.Model.UserDTO;
 
-@FeignClient(value = "user-service", url = "http://localhost:8081")
+@FeignClient(value = "user-service", url = "http://localhost:8082")
 public interface UserClient {
 
     @GetMapping("/users/{id}")
