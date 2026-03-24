@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.beans.factory.annotation.Autowired;
 
 
 
@@ -21,8 +21,10 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class OrderController {
 
-    private final UserClient userClient;
-    private final ProductClient productClient;
+    @Autowired
+    private UserClient userClient;
+    @Autowired
+    private ProductClient productClient;
 
     @PostMapping
     public String placeOrder(@RequestBody Order order) {
