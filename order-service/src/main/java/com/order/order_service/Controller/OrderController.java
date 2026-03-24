@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.beans.factory.annotation.Autowired;
 
 
 
@@ -21,16 +20,14 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class OrderController {
 
-    @Autowired
-    private UserClient userClient;
-    @Autowired
-    private ProductClient productClient;
+    private final UserClient userClient;
+    private final ProductClient productClient;
 
     @PostMapping
     public String placeOrder(@RequestBody Order order) {
 
-        UserDTO user = userClient.getUser(order.getUserId());
-        ProductDTO product = productClient.getProduct(order.getProductId());
+        UserDTO user = userClient.getUserById(order.getUserId());
+        ProductDTO product = productClient.getProductById(order.getProductId());
 
         if (user == null || product == null) {
             return "Invalid user or product!";
